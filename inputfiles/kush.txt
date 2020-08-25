@@ -1,0 +1,6 @@
+Kush 10
+Abhi 17
+Saharsh 12
+Atul 10
+Steven 3
+sum of all ages is:52

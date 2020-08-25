@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class kushinputoutput
+    //8-25-2020
 {
     public static void main(String[] args){
         try(BufferedReader reader = new BufferedReader(new FileReader("testtext.txt"));

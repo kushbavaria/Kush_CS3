@@ -3,27 +3,27 @@ package Maze;
 import java.util.Stack;
 import java.util.ArrayList;
 
-public class Maze
+public class MainMaze
 {
-    private MazeCell[][] maze;
-    private Stack<MazeCell> trail;
-    private MazeCell start;
+    private MazeStacks[][] maze;
+    private Stack<MazeStacks> trail;
+    private MazeStacks start;
     
-    public Maze(MazeCell[][] madeMaze, int xBegin, int yBegin)
+    public MainMaze(MazeStacks[][] madeMaze, int xBegin, int yBegin)
     {
         maze = madeMaze;
         start = maze[xBegin][yBegin];
-        trail = new Stack<MazeCell>();
+        trail = new Stack<MazeStacks>();
     }
     
     
     public void solveStep(){    
         
         start = trail.peek();
-        MazeCell left;    
-        MazeCell right;
-        MazeCell up; 
-        MazeCell down;
+        MazeStacks left;
+        MazeStacks right;
+        MazeStacks up;
+        MazeStacks down;
         if(start.getY() > 0 && check(left  = maze[start.getX()][start.getY() -1])){
             start = left;
             trail.push(start);
@@ -56,15 +56,15 @@ public class Maze
             trail.pop();
         }
     }
-    public boolean check(MazeCell spot){
+    public boolean check(MazeStacks spot){
         return spot.getBlank() && spot.getoldplace() == false;
     }
     public String Xplacer(){
         String stackTrail = "";
-        ArrayList<MazeCell> out = new ArrayList<MazeCell>();
+        ArrayList<MazeStacks> out = new ArrayList<MazeStacks>();
         out.addAll(trail);
 
-        for(MazeCell spot : out){
+        for(MazeStacks spot : out){
             stackTrail += spot.coordinates() + "\n";
         }
         return stackTrail;
@@ -87,8 +87,8 @@ public class Maze
             trail.pop().setwallBinary("-");
         }
         
-        for(MazeCell[] row: maze){
-            for(MazeCell spot: row)
+        for(MazeStacks[] row: maze){
+            for(MazeStacks spot: row)
                 kushBoard += spot + " ";
             kushBoard += "\n";
         }

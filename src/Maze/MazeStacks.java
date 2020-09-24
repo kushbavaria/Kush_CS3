@@ -1,6 +1,6 @@
 package Maze;
 
-public class MazeCell
+public class MazeStacks
 {
     private boolean blank;
     private boolean oldplace;
@@ -8,7 +8,7 @@ public class MazeCell
     private int x;
     private int y;
 
-    public MazeCell(int a, int b, boolean pS, boolean bl){
+    public MazeStacks(int a, int b, boolean pS, boolean bl){
 
         oldplace = pS;
         blank = bl;

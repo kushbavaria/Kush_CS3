@@ -3,7 +3,7 @@ package Maze;
 import java.io.*;
 import java.util.Scanner;
 
-public class Tester
+public class MazeRunner
 {
     public static void main(String[] args){
         
@@ -12,7 +12,7 @@ public class Tester
              
              int x = kb.nextInt();
              int y = kb.nextInt();    
-             MazeCell[][] m = new MazeCell[x][y];        
+             MazeStacks[][] m = new MazeStacks[x][y];
              String line;
              for(int row = 0; row < x; row++){
                  line = bReader.readLine();
@@ -20,14 +20,14 @@ public class Tester
                  Scanner scan = new Scanner(line);
                  for(int col = 0; col < y; col++){                  
                      if( scan.nextInt() == 0){
-                         m[row][col] = new MazeCell(row, col, false, true);
+                         m[row][col] = new MazeStacks(row, col, false, true);
                         }                        
                      else{
-                         m[row][col] = new MazeCell(row, col, false, false);
+                         m[row][col] = new MazeStacks(row, col, false, false);
                         }
                  }
              }             
-             Maze maze = new Maze(m,0,0);
+             MainMaze maze = new MainMaze(m,0,0);
              System.out.println(maze);
              
              maze.solveMaze();

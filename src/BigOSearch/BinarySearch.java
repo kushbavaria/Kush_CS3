@@ -34,14 +34,14 @@ public class BinarySearch {
     }
 
     public static int binarySearch(int array[], int x, int l, int r) {
-        int mid = l + (r - l) / 2;
+        int center = l + (r - l) / 2;
         if (r >= l) {
-             if (array[mid] == x) {
+             if (array[center] == x) {
                 return 1;
-            } else if (array[mid] > x) {
-                return 1 + binarySearch(array, x, l, mid - 1);
+            } else if (array[center] > x) {
+                return 1 + binarySearch(array, x, l, center - 1);
             } else {
-                return 1 + binarySearch(array, x, mid + 1, r);
+                return 1 + binarySearch(array, x, center + 1, r);
             }
         }
         return 1;

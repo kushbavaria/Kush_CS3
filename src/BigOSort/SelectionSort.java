@@ -7,17 +7,17 @@ public class SelectionSort
     public static void main(String args[]){
         int[] testone = random(10);
         System.out.println("original: " + Arrays.toString(testone));
-        int c = selectionSort(testone);
-        System.out.println("comparisons: " + c);
+        int comp1 = selectionSort(testone);
+        System.out.println("comparisons: " + comp1);
         System.out.println("sorted: " + Arrays.toString(testone));
         int[] testtwo = new int[]{1,2,3,4,5,6,7,8,9,10};
-        int c2 = selectionSort(testtwo);
+        int comp2 = selectionSort(testtwo);
         System.out.println("\nsorted is: " + Arrays.toString(testtwo));
-        System.out.println("comparisons: " + c2);
+        System.out.println("comparisons: " + comp2);
         int[] testhree = new int[]{10,9,8,7,6,5,4,3,2,1};
-        int c3 = selectionSort(testhree);
+        int comp3 = selectionSort(testhree);
         System.out.println("\nsorted is: " + Arrays.toString(testhree));
-        System.out.println("comparisons: " + c3);
+        System.out.println("comparisons: " + comp3);
         System.out.println("\nsorting 10 lists of n = " + 10);
         int[] test = test(10);
         System.out.println("\nbest: " + test[0] + ", average: " + test[1] + ", worst: " + test[2]);

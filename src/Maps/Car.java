@@ -2,7 +2,7 @@ package Maps;
 
 import java.util.Arrays;
 import java.util.ArrayList;
-public class Car implements Comparable<Car>
+public class Car
 {
     private int maxSpeed;
     private int CarId;
@@ -22,17 +22,7 @@ public class Car implements Comparable<Car>
         model = mode;
         colors = new ArrayList<String>(Arrays.asList(color));
     }
-    
-    public int compareTo(Car b){
-        if(this.getmaxSpeed() == b.getmaxSpeed())
-                return this.getmodel().compareTo(b.getmodel());
-            else
-                if(this.getmaxSpeed() < b.getmaxSpeed())
-                    return -1;
-                else
-                    return 1;
-    }
-    
+
     public int getmaxSpeed(){
         return maxSpeed;
     }
@@ -64,16 +54,16 @@ public class Car implements Comparable<Car>
     public void setmodel(String f){
         model = f;
     }
-    
-    public String format(ArrayList<String> colors){
+
+    public String toString(){
+        return String.format("%s has a max speed of %d miles per hour, and the CarID is %d and the avialable  colors are %s", model, maxSpeed, CarId, colorOrganizer(colors));
+    }
+
+    public String colorOrganizer(ArrayList<String> colors){
         String output = "";
         for(int i = 0; i < colors.size()-1; i++)
             output += colors.get(i) + ", ";
         output += colors.get(colors.size()-1);
         return output;
-    }
-    
-    public String toString(){
-        return String.format("%s has a max speed of %d miles per hour, and the CarID is %d and the avialable  colors are %s", model, maxSpeed, CarId, format(colors));
     }
 }

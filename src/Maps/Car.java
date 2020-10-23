@@ -16,11 +16,11 @@ public class Car
         this.colors = new ArrayList<String>();
     }
     
-    public Car(int maxSpee, int CarI, String mode, String ... color){
+    public Car(int maxSpee, int CarI, String mode, ArrayList<String> k){
         maxSpeed = maxSpee;
         CarId = CarI;
         model = mode;
-        colors = new ArrayList<String>(Arrays.asList(color));
+        colors = k;
     }
 
     public int getmaxSpeed(){
@@ -31,28 +31,30 @@ public class Car
         return CarId;
     }
     
-    public ArrayList<String> getcolors(){
-        return colors;
-    }
+
     
     public String getmodel(){
         return model;
     }
     
-    public void setmaxSpeed(int g){
-        maxSpeed = g;
+    public void setmaxSpeed(int s){
+        maxSpeed = s;
     }
     
-    public void setCarId(int s){
-        CarId = s;
+    public void setCarId(int i){
+        CarId = i;
     }
-    
-    public void setcolors(String ... c){
-        colors = new ArrayList<String>(Arrays.asList(c));;
+
+    public ArrayList<String> getColors() {
+        return colors;
     }
-    
-    public void setmodel(String f){
-        model = f;
+
+    public void setColors(ArrayList<String> c) {
+        colors = c;
+    }
+
+    public void setmodel(String m){
+        model = m;
     }
 
     public String toString(){

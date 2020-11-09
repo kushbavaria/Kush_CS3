@@ -5,13 +5,21 @@ public class CustomList
 {
     private String content;
     private CustomList next;
-
+    private CustomList previous;
+    
     public CustomList(String c){
         content = c;
+        previous = null;
         next = null;
     }
 
     public CustomList(String c, CustomList n){
+        content = c;
+        next = n;
+    }
+    
+    public CustomList(CustomList p, String c, CustomList n){
+        previous = p;
         content = c;
         next = n;
     }
@@ -28,12 +36,21 @@ public class CustomList
         next = n;
     }
 
+    public CustomList getPrevious(){ 
+        return previous; 
+    }
+
+    public void setPrevious(CustomList p){ 
+        previous = p; 
+    }
+
+
     public void add(String c){
-        CustomList newNode = new CustomList(c,null);
         CustomList temp = this;
         while(temp.getNext() != null){
             temp = temp.getNext();
         }
+        CustomList newNode = new CustomList(temp,c,null);
         temp.setNext(newNode);
     }
 
@@ -42,11 +59,14 @@ public class CustomList
             String content = this.content;
             CustomList next = this.next;
             this.content = c;
-            this.next = new CustomList(content, next);
+            this.next = new CustomList(null, content, next);
+            next.previous = this.next;
+            this.next.previous = this;            
         }
         else if(index < this.size()-1){
             CustomList before = getReference(index-1);
-            CustomList next = new CustomList(c, before.next);
+            CustomList next = new CustomList(before, c, before.next);
+            before.next.setPrevious(next);
             before.next = next;
         }
         else{
@@ -63,7 +83,7 @@ public class CustomList
         for(int i = 0; i < index; i++)
             node = node.getNext();
         return node;
-    }
+    } 
 
     public int size(){
         int length = 1;
@@ -74,6 +94,7 @@ public class CustomList
         }
         return length;
     }
+    
     public String get(int index){
         CustomList temp = this;
         for(int i = 0; i < index; i++){
@@ -89,6 +110,7 @@ public class CustomList
             CustomList point = this.next;
             this.next = point.next;
             this.content = point.content;
+            point.previous = null;
         }
         else if(index < this.size()-1){
             CustomList before = getReference(index-1);
@@ -110,4 +132,15 @@ public class CustomList
         }
         return answer;
     }
+    
+    public String backWords(){
+        String list = "reversed list contains ";
+        CustomList temp = getReference(size()-1);
+        while(temp != null){
+            list += temp.getContent() + " ";
+            temp = temp.getPrevious();
+        }
+        return list;
+    }
 }
+

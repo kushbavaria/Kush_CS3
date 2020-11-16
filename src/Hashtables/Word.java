@@ -17,7 +17,7 @@ public class Word
     }
     //write the hashCode method
     public int hashCode(){
-    String vowels = "aeiou";
+    String vowels = "kushiscool";
     int vowelCount = 0;
     for(int i = 0;i<theValue.length();i++){
         if(vowels.indexOf(theValue.substring(i,i+1))!=-1){

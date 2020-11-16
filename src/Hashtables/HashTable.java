@@ -13,9 +13,9 @@ public class HashTable
         }
     }
     public void add(Object obj){
-        int i = obj.hashCode() % 10;
-        if(!table[i].contains(obj)){
-            table[i].add(obj);
+        int bush = obj.hashCode() % 10;
+        if(!table[bush].contains(obj)){
+            table[bush].add(obj);
         }
     }
     public String toString(){

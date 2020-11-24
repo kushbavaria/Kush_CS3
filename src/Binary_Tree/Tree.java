@@ -88,7 +88,6 @@ public class Tree
     public String inOrder(Tree t){
         if(t == null)
             return "";
-        
         return inOrder(t.getLeft()) + " " + t.getContent() + " " + inOrder(t.getRight());
     }
     public  String revOrder(Tree t){

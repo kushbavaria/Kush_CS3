@@ -1,18 +1,23 @@
+ 
 
-
-public class Tree2020Runner
+public class Tree2020Runner 
 {
     public static void main(String[] args){
+         
+        // Tree left = new Tree(80,new Tree(70,null,null),new Tree(85,null,null));
+        // Tree right = new Tree(100,new Tree(98,null,null),new Tree(120,null,null));
         
-        Tree left = new Tree(80,new Tree(70,null,null),new Tree(85,null,null));
-        Tree right = new Tree(100,new Tree(98,null,null),new Tree(120,null,null));
+        // Tree root = new Tree(90,left,right);
         
-        Tree root = new Tree(90,left,right);
-        
+        Tree root = Tree.build_tree(new int[]{1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324});
         System.out.println(root);
         System.out.println(root.getLeft());
         System.out.println(root.getRight());
         
+        System.out.println(" Deleting Min and Max");
+        root.delete(root, 8);
+        root.deleteMin(root);
+        root.deleteMax(root);
 
         System.out.println("IN ORDER\n" + root.inOrder(root));
         System.out.println("PRE ORDER\n" + root.preOrder(root));

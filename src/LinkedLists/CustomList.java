@@ -3,28 +3,31 @@ package LinkedLists;
 
 public class CustomList
 {
-    private String content;
+    private int content;
     private CustomList next;
     private CustomList previous;
     
-    public CustomList(String c){
+    public CustomList(int c){
         content = c;
         previous = null;
         next = null;
     }
 
-    public CustomList(String c, CustomList n){
+    public CustomList(int c, CustomList n){
         content = c;
         next = n;
     }
     
-    public CustomList(CustomList p, String c, CustomList n){
+    public CustomList(CustomList p, int c, CustomList n){
         previous = p;
         content = c;
         next = n;
     }
 
-    public String getContent(){
+    public void setContent(int a) {
+        content = a;
+    }
+    public int getContent(){
         return content;
     }
 
@@ -44,8 +47,23 @@ public class CustomList
         previous = p; 
     }
 
+    public void insertionSort(CustomList a){
+        int compare = 0;
+        for(int i = 1; i < size(); i++){
+            CustomList place = getReference(i);
+            int j = i - 1;
+            while (j >= 0 && getReference(j).getContent() > place.getContent()) {
+                getReference(j+i).setContent(getReference(j).getContent());
+                j--;
+                compare++;
+            }
+            getReference(j + 1).setContent(place.getContent());
+            compare++;
+        }
+    }
 
-    public void add(String c){
+
+    public void add(int c){
         CustomList temp = this;
         while(temp.getNext() != null){
             temp = temp.getNext();
@@ -54,9 +72,9 @@ public class CustomList
         temp.setNext(newNode);
     }
 
-    public void add(int index, String c){
+    public void add(int index, int c){
         if(index == 0){
-            String content = this.content;
+            int content = this.content;
             CustomList next = this.next;
             this.content = c;
             this.next = new CustomList(null, content, next);
@@ -74,7 +92,8 @@ public class CustomList
         }
     }
 
-    public void set(int index, String c){
+    public void set(int index, int c){
+
         getReference(index).content = c;
     }
 
@@ -95,7 +114,7 @@ public class CustomList
         return length;
     }
     
-    public String get(int index){
+    public int get(int index){
         CustomList temp = this;
         for(int i = 0; i < index; i++){
             temp = temp.getNext();

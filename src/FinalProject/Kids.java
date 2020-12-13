@@ -1,6 +1,6 @@
 package FinalProject;
 
-public class Child implements Comparable<Child>
+public class Kids implements Comparable<Kids>
 {
     private int age;
     private int niceornaughty;
@@ -16,7 +16,7 @@ public class Child implements Comparable<Child>
         this.age = age;
     }
 
-    public Child(int k, String n, String s){
+    public Kids(int k, String n, String s){
         age = k;
         niceornaughty = 0;
         name = n;
@@ -47,7 +47,7 @@ public class Child implements Comparable<Child>
         this.address = address;
     }
 
-    public int compareTo(Child student){
+    public int compareTo(Kids student){
         if(niceornaughty > student.getNiceornaughty()){
             return -1;
         }

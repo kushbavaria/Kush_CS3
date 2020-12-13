@@ -11,7 +11,7 @@ public class Elfrunner {
         String kush = "Santa's Workshop Software v0.1\n Enter the menu selection that you would like:\n1 - print list of children being monitored\n2 - record a nice action\n3 - record a naughty action\n4- update nice/naughty state\n5 - print the Christmas Eve santaRoute\n6 - exit";
         int choice = 0;
         Scanner kb = new Scanner(System.in);
-        ArrayList<Kids> kids = makeChild();
+        ArrayList<Kids> kids = makeKids();
         Map<Kids, Stack<String>> stocking = new HashMap<Kids, Stack<String>>();
         Map<Kids, ArrayList<String>> nice = new HashMap<Kids, ArrayList<String>>();
         Map<Kids, ArrayList<String>> naughty = new HashMap<Kids, ArrayList<String>>();
@@ -37,12 +37,12 @@ public class Elfrunner {
                 for (int i = 0; i < kids.size(); i++) {
                     System.out.println(i + " " + kids.get(i));
                 }
-                System.out.print("\nSelect the child you want to add a nice action to: ");
-                int children = kb.nextInt();
+                System.out.print("\nSelect the kid you want to add a nice action to: ");
+                int bush = kb.nextInt();
                 System.out.print("\nEnter a description of the nice action: ");
                 String action = kb.next() + kb.nextLine();
-                nice.get(kids.get(children)).add(action);
-                kids.get(children).setNiceornaughty(nice.get(kids.get(children)).size() - naughty.get(kids.get(children)).size());
+                nice.get(kids.get(bush)).add(action);
+                kids.get(bush).setNiceornaughty(nice.get(kids.get(bush)).size() - naughty.get(kids.get(bush)).size());
                 printNaughtyorNice(kids, nice, naughty);
                 System.out.println();
 
@@ -50,30 +50,30 @@ public class Elfrunner {
                 for (int i = 0; i < kids.size(); i++) {
                     System.out.println(i + " " + kids.get(i));
                 }
-                System.out.print("\nSelect the child you want to add a naughty action to: ");
-                int children = kb.nextInt();
+                System.out.print("\nSelect the kid you want to add a naughty action to: ");
+                int bush = kb.nextInt();
                 System.out.print("\nEnter a description of the naughty action: ");
                 String action = kb.next() + kb.nextLine();
-                naughty.get(kids.get(children)).add(action);
-                kids.get(children).setNiceornaughty(nice.get(kids.get(children)).size() - naughty.get(kids.get(children)).size());
+                naughty.get(kids.get(bush)).add(action);
+                kids.get(bush).setNiceornaughty(nice.get(kids.get(bush)).size() - naughty.get(kids.get(bush)).size());
                 printNaughtyorNice(kids, nice, naughty);
                 System.out.println();
 
-            } else if (choice == 4) {
-                System.out.println();
+            }
+            else if(choice == 4) {
                 System.out.println(updateNiceONaughty(kids, nice, naughty, stocking));
-
-                
-            } else if (choice == 5) {
-                for (int i = 0; i < kids.size(); i++) {
+            }
+            else if(choice == 5){
+                for(int i = 0; i < kids.size(); i++){
                     santaRoute.add(kids.get(i));
                 }
-                while (!santaRoute.isEmpty()) {
-                    Kids person = santaRoute.remove();
-                    System.out.print(person.getName() + person.getAddress() + stocking.get(person).size());
-                    if (stocking.get(person).isEmpty() || stocking.get(person).peek().indexOf("coal") >= 0) {
+                while(!santaRoute.isEmpty()){
+                    Kids now = santaRoute.remove();
+                    System.out.print(now.getName() + " who lives at " + now.getAddress() + " will get " + stocking.get(now).size());
+                    if(stocking.get(now).isEmpty() || stocking.get(now).peek().indexOf("coal") >= 0){
                         System.out.print(" lump(s) of coal");
-                    } else {
+                    }
+                    else{
                         System.out.print(" present(s)");
                     }
                     System.out.println();
@@ -81,7 +81,7 @@ public class Elfrunner {
             }
         }
     }
-    public static ArrayList<Kids> makeChild(){
+    public static ArrayList<Kids> makeKids(){
         ArrayList<Kids> identifiers = new ArrayList<Kids>();
         String[] names = {"kush", "atul", "bonsall", "micheal", "Swain", "Bob", "Quinn", "Sion", "Urgot", "Ryze"};
         Integer[] ages = {17,27,32,43,31,12,4,2,12,55};
@@ -91,6 +91,32 @@ public class Elfrunner {
         }
         return identifiers;
     }
+    public static String updateNiceONaughty(ArrayList<Kids> kids, Map<Kids, ArrayList<String>> nice, Map<Kids, ArrayList<String>> naughty, Map<Kids, Stack<String>> stocking) {
+
+        String out = "\n" +("List of Presents");
+        for(int i = 0; i < kids.size(); i++){
+            Stack<String> kidsStocking = stocking.get(kids.get(i));
+            if(kids.get(i).getNiceornaughty() <= 0){
+                if(kidsStocking.isEmpty() || kidsStocking.peek().contains("coal")){
+                    kidsStocking.push("coal");
+                }
+                else{
+                    kidsStocking.pop();
+                }
+            }
+            else{
+                if(kidsStocking.isEmpty() || kidsStocking.peek().contains("present")){
+                    kidsStocking.push("present");
+                }
+                else{
+                    kidsStocking.pop();
+                }
+            }
+            out += "\n"+(kids.get(i).getName() + kidsStocking);
+        }
+        return out;
+     }
+
     public static void printNaughtyorNice(ArrayList<Kids> kids, Map<Kids, ArrayList<String>> nice, Map<Kids, ArrayList<String>> naughty) {
         System.out.println("\nNice");
         for (int i = 0; i < kids.size(); i++) {
@@ -102,28 +128,7 @@ public class Elfrunner {
         }
     }
 
-    public static String updateNiceONaughty(ArrayList<Kids> kids, Map<Kids, ArrayList<String>> nice, Map<Kids, ArrayList<String>> naughty, Map<Kids, Stack<String>> stocking) {
-        String out = "\n" + "List of Presents";
-        for (int i = 0; i < kids.size(); i++) {
-            Stack<String> childsStocking = stocking.get(kids.get(i));
-            if (kids.get(i).getNiceornaughty() <= 0) {
 
-                if (childsStocking.isEmpty() || childsStocking.peek().indexOf("coal") >= 0) {
-                    childsStocking.push("coal");
-                } else {
-                    childsStocking.pop();
-                }
-            } else {
-                if (childsStocking.isEmpty() || childsStocking.peek().indexOf("present") >= 0) {
-                    childsStocking.push("present");
-                } else {
-                    childsStocking.pop();
-                }
-            }
-            out += "\n"+(kids.get(i).getName() + childsStocking);
-        }
-        return out;
-    }
 
 
 }

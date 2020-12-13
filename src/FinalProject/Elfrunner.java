@@ -68,9 +68,9 @@ public class Elfrunner {
                     santaRoute.add(kids.get(i));
                 }
                 while(!santaRoute.isEmpty()){
-                    Kids now = santaRoute.remove();
-                    System.out.print(now.getName() + " who lives at " + now.getAddress() + " will get " + stocking.get(now).size());
-                    if(stocking.get(now).isEmpty() || stocking.get(now).peek().indexOf("coal") >= 0){
+                    Kids dush = santaRoute.remove();
+                    System.out.print(dush.getName() + "  " + dush.getAddress() + " " + stocking.get(dush).size());
+                    if(stocking.get(dush).isEmpty() || stocking.get(dush).peek().indexOf("coal") >= 0){
                         System.out.print(" lump(s) of coal");
                     }
                     else{

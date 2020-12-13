@@ -48,10 +48,10 @@ public class Kids implements Comparable<Kids>
     }
 
     public int compareTo(Kids student){
-        if(niceornaughty > student.getNiceornaughty()){
+        if((niceornaughty == student.getNiceornaughty())){
             return -1;
         }
-        else if(niceornaughty == student.getNiceornaughty()){
+        else if(niceornaughty > student.getNiceornaughty()){
             return 0;
         }
         else{

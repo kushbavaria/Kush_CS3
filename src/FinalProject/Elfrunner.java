@@ -83,15 +83,24 @@ public class Elfrunner {
     }
     public static ArrayList<Kids> makeChild(){
         ArrayList<Kids> identifiers = new ArrayList<Kids>();
-        String[] street = {"kush street 1211", "bush street 321231", "lush street 438920", "dush boulavard 18282", "atul street 12921", "atul highway 12112", "rush drive 109201", "ratul dash 19191", "iush lane 321", "qush boulavard 19191"};
         String[] names = {"kush", "atul", "bonsall", "micheal", "Swain", "Bob", "Quinn", "Sion", "Urgot", "Ryze"};
         Integer[] ages = {17,27,32,43,31,12,4,2,12,55};
+        String[] locations = {"kush street 1211", "bush street 321231", "lush street 438920", "dush boulavard 18282", "atul street 12921", "atul highway 12112", "rush drive 109201", "ratul dash 19191", "iush lane 321", "qush boulavard 19191"};
         for(int i = 0; i<10; i++){
-            identifiers.add(new Kids(ages[i], names[i], street[i]));
+            identifiers.add(new Kids(ages[i], names[i], locations[i]));
         }
         return identifiers;
     }
-
+    public static void printNaughtyorNice(ArrayList<Kids> kids, Map<Kids, ArrayList<String>> nice, Map<Kids, ArrayList<String>> naughty) {
+        System.out.println("\nNice");
+        for (int i = 0; i < kids.size(); i++) {
+            System.out.println(kids.get(i).getName() + " " + nice.get(kids.get(i)));
+        }
+        System.out.println("\nNaughty");
+        for (int i = 0; i < kids.size(); i++) {
+            System.out.println(kids.get(i).getName() + " " + naughty.get(kids.get(i)));
+        }
+    }
 
     public static String updateNiceONaughty(ArrayList<Kids> kids, Map<Kids, ArrayList<String>> nice, Map<Kids, ArrayList<String>> naughty, Map<Kids, Stack<String>> stocking) {
         String out = "\n" + "List of Presents";
@@ -116,16 +125,7 @@ public class Elfrunner {
         return out;
     }
 
-    public static void printNaughtyorNice(ArrayList<Kids> kids, Map<Kids, ArrayList<String>> nice, Map<Kids, ArrayList<String>> naughty) {
-        System.out.println("\nNice");
-        for (int i = 0; i < kids.size(); i++) {
-            System.out.println(kids.get(i).getName() + " " + nice.get(kids.get(i)));
-        }
-        System.out.println("\nNaughty");
-        for (int i = 0; i < kids.size(); i++) {
-            System.out.println(kids.get(i).getName() + " " + naughty.get(kids.get(i)));
-        }
-    }
+
 }
    
    

@@ -1,9 +1,8 @@
 package TowerOfHanoi;
 
 import java.util.Stack;
-import java.util.ArrayList; 
 
-public class Tower
+public class TowerofHanoi
 {
     private Stack<Integer> left;
     private Stack<Integer> middle;
@@ -12,11 +11,11 @@ public class Tower
     private int moves;
     private String output;
     
-    public Tower(){
+    public TowerofHanoi(){
         this(5);
     }
     
-    public Tower(int d){
+    public TowerofHanoi(int d){
         output = "";
         disks = d;
         moves = 0;
@@ -31,6 +30,7 @@ public class Tower
     } 
     
     public String toString(){
+
         return output;
     }
     

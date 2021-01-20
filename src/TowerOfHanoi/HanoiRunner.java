@@ -1,9 +1,9 @@
 package TowerOfHanoi;
 
-public class TowerRunner
+public class HanoiRunner
 {
     public static void main(String[] args){
-        Tower t = new Tower(3);
+        TowerofHanoi t = new TowerofHanoi(3);
         t.solve();
         System.out.println(t);
     }
